@@ -64,7 +64,7 @@ sendduco(socket,10,"Yanis");
 
 ### Full example
 Here's a little (but functionnal) example that gets (and shows on screen) balance, and then sends 10 DUCO to user Yanis (me xD) ! Feel free of running it (and giving me 10 Duino-Coins lol) !
-```
+```c
 #include "ducolib.h"
 #include <stdio.h>
 
