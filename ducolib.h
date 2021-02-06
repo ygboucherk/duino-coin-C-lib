@@ -32,7 +32,7 @@ int ducobalance(sock) {
 	return balance;
 }
 
-int login(sock, username, password) {
+int ducologin(sock, username, password) {
   char request[200];
   char response[128];
   snprintf(request, sizeof request, "%s%s%s%s", "LOGI,", username, ",", password);
