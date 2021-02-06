@@ -23,7 +23,7 @@
 #include <stdlib.h>
 #define PORT 2811
 
-int ducobalance(sock) {
+int ducobalance(int sock) {
 	char rawbalance[500];
 	double balance;
 	send(sock,"BALA,",5,0);
@@ -32,7 +32,7 @@ int ducobalance(sock) {
 	return balance;
 }
 
-int ducologin(sock, username, password) {
+int ducologin(int sock, char *username, char *password) {
   char request[200];
   char response[128];
   snprintf(request, sizeof request, "%s%s%s%s", "LOGI,", username, ",", password);
@@ -48,7 +48,7 @@ int ducologin(sock, username, password) {
 
 
 
-int sendduco(int sock, double amount,recipient) {
+int sendduco(int sock, double amount,char *recipient) {
         char request[256];
         char feedback[256];
         char stramount[50];
