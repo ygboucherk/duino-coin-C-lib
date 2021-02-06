@@ -68,19 +68,21 @@ Here's a little (but functionnal) example that gets (and shows on screen) balanc
 #include "ducolib.h"
 #include <stdio.h>
 
-int socket;
-int feedback;
-double balance;
-socket = connectDuco();
-ducologin(socket,"test","test");
-balance = ducobalance(socket);
-printf("Your DUCO balance is %f", balance);
-feedback = sendduco(socket,10,"Yanis");
-if (feedback == 0) {
-  printf("Successfully sent 10 DUCO to Yanis");
-}
-else {
-  printf("Something went wrong")
+int main() {
+  int socket;
+  int feedback;
+  double balance;
+  socket = connectDuco();
+  ducologin(socket,"test","test");
+  balance = ducobalance(socket);
+  printf("Your DUCO balance is %f", balance);
+  feedback = sendduco(socket,10,"Yanis");
+  if (feedback == 0) {
+    printf("Successfully sent 10 DUCO to Yanis");
+  }
+  else {
+    printf("Something went wrong")
+  }
 }
 ```
 
