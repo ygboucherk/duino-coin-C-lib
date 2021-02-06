@@ -26,8 +26,9 @@
 int ducobalance(int sock) {
 	char rawbalance[500];
 	double balance;
-	send(sock,"BALA,",5,0);
+	send(sock,"BALA",4,0);
 	recv(sock,rawbalance,500,0);
+  
 	balance = atof(rawbalance);
 	return balance;
 }
@@ -44,17 +45,18 @@ int ducologin(int sock, char *username, char *password) {
 	else {
 		return 1;
 	}
-}
+} 
 
 
 
-int sendduco(int sock, double amount,char *recipient) {
+int sendduco(int sock, double amount, char *recipient) {
         char request[256];
         char feedback[256];
         char stramount[50];
+        printf("Sending DUCO");
         snprintf(stramount,sizeof stramount, "%f",amount);
         snprintf(request, sizeof request, "%s%s%s%s", "SEND,-,", recipient, ",", stramount);
-        printf(stramount);
+        send(sock,request,strlen(request),0);
         recv(sock,feedback,256,0);
 		if (strstr("OK",feedback) != NULL) {
 			return 0;
