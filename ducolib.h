@@ -53,7 +53,6 @@ int sendduco(int sock, double amount, char *recipient) {
         char request[256];
         char feedback[256];
         char stramount[50];
-        printf("Sending DUCO");
         snprintf(stramount,sizeof stramount, "%f",amount);
         snprintf(request, sizeof request, "%s%s%s%s", "SEND,-,", recipient, ",", stramount);
         send(sock,request,strlen(request),0);
@@ -106,3 +105,18 @@ int connectDuco()
 
     return 0;
 }
+
+int ducoregister(int sock, char *username, char *password, char *email) {
+	char request[256];
+	char feedback[256];
+	snprintf(request,sizeof request,"REGI,%s,%s,%s",username,password,email);
+	send(sock,request,strlen(request),0);
+	recv(sock,feedback,128,0);
+	if (strstr("OK",feedback) != NULL) {
+		return 0;
+	}
+	else {
+		return 1;
+	}
+}
+	
