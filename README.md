@@ -24,13 +24,35 @@ socket = connectDuco();
 #### Logging in
 `ducologin(socket,username,password)` takes 3 arguments.
 
-`socket` is the socket previously, `username` is DUCO username and `password` is DUCO password.
+`socket` is the previously used socket, `username` is DUCO username and `password` is DUCO password.
 
 example :
 ```c
 int socket;
 socket = connectDuco();
 ducologin(socket,"test","test");
+```
+
+#### Registering
+`ducoregister(socket,email,username,password)` takes 4 arguments.
+
+`socket` is (still) the previously used socke. `username` is desired DUCO username, `password` is desired DUCO password. Email is the email used for registering.
+
+If operation succeeds, it returns `0`. Else, it returns `1` ! 
+
+example (without `int main()`) :
+```c
+int socket;
+int registerfeedback;
+socket = connectDuco();
+registerfeedback = ducoregister(socket,"aNewUsername","aStrongPasswordThatLeakedOnGithub","DucoTest@testmail.xyz");
+if (registerfeedback == 0) {
+  printf("Registration success");
+}
+else {
+  printf("Registration failed...");
+}
+
 ```
 
 
