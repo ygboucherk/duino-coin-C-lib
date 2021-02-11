@@ -3,7 +3,8 @@ A C library for interacting with Duino-Coin network
 
 ## Usage
 ### Importing library
-First put `ducolib.h` in the directory where's ur C program stored
+First put both `ducolib.h` and `ducolib.c` in the directory where's ur C program stored.
+For compiling, you should also select `ducolib.c` function
 
 Then include it within program using :
 ```c
